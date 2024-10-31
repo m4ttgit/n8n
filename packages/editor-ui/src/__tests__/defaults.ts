@@ -16,6 +16,7 @@ export const defaultSettings: FrontendSettings = {
 	endpointFormWaiting: '',
 	endpointWebhook: '',
 	endpointWebhookTest: '',
+	endpointWebhookWaiting: '',
 	enterprise: {
 		sharing: false,
 		ldap: false,
@@ -110,7 +111,7 @@ export const defaultSettings: FrontendSettings = {
 	mfa: {
 		enabled: false,
 	},
-	ai: {
+	askAi: {
 		enabled: false,
 	},
 	workflowHistory: {
@@ -123,4 +124,5 @@ export const defaultSettings: FrontendSettings = {
 	aiAssistant: {
 		enabled: false,
 	},
+	betaFeatures: [],
 };
