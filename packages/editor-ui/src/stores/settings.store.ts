@@ -70,6 +70,8 @@ export const useSettingsStore = defineStore(STORES.SETTINGS, () => {
 
 	const concurrency = computed(() => settings.value.concurrency);
 
+	const isConcurrencyEnabled = computed(() => concurrency.value !== -1);
+
 	const isPublicApiEnabled = computed(() => api.value.enabled);
 
 	const isSwaggerUIEnabled = computed(() => api.value.swaggerUi.enabled);
@@ -147,7 +149,7 @@ export const useSettingsStore = defineStore(STORES.SETTINGS, () => {
 	const permanentlyDismissedBanners = computed(() => settings.value.banners?.dismissed ?? []);
 
 	const isBelowUserQuota = computed(
-		() =>
+		(): boolean =>
 			userManagement.value.quota === -1 ||
 			userManagement.value.quota > useUsersStore().allUsers.length,
 	);
@@ -384,6 +386,7 @@ export const useSettingsStore = defineStore(STORES.SETTINGS, () => {
 		security,
 		nodeJsVersion,
 		concurrency,
+		isConcurrencyEnabled,
 		isPublicApiEnabled,
 		isSwaggerUIEnabled,
 		isPreviewMode,
