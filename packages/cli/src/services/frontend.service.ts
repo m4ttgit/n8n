@@ -231,7 +231,7 @@ export class FrontendService {
 				blockFileAccessToN8nFiles: this.securityConfig.blockFileAccessToN8nFiles,
 			},
 			betaFeatures: this.frontendConfig.betaFeatures,
-			virtualSchemaView: config.getEnv('virtualSchemaView'),
+			easyAIWorkflowOnboarded: false,
 		};
 	}
 
@@ -274,6 +274,11 @@ export class FrontendService {
 		}
 
 		this.settings.banners.dismissed = dismissedBanners;
+		try {
+			this.settings.easyAIWorkflowOnboarded = config.getEnv('easyAIWorkflowOnboarded') ?? false;
+		} catch {
+			this.settings.easyAIWorkflowOnboarded = false;
+		}
 
 		const isS3Selected = config.getEnv('binaryDataManager.mode') === 's3';
 		const isS3Available = config.getEnv('binaryDataManager.availableModes').includes('s3');
